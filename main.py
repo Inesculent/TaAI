@@ -32,8 +32,10 @@ def main():
         st.write("Successfully uploaded a PDF file.")
         documents = load_pdf(documents)
         chunks = split_documents(documents)
-        add_to_chroma(chunks) #Issue here
+        add_to_chroma(chunks) 
+        st.write("Question about to be asked")
         question = st.text_input("Ask a question")
+        st.write("Question has been asked")
         if st.button("Generate Answer"):
             if question:
                 response = test_question(question)
