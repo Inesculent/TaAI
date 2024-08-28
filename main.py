@@ -24,16 +24,30 @@ def main():
         clear_database()
 
     # Create (or update) the data store.
-    documents = load_documents()
+    
+    
+    documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
-    if (documents != None):
+    if documents is not None:
+        documents = load_pdf(documents)
         chunks = split_documents(documents)
         add_to_chroma(chunks) #Issue here
-        documents = load_documents()
-    question = st.text_input("Ask a question")
-    response = test_question(question)
-    st.write(response)
+        question = st.text_input("Ask a question")
+        if st.button("Generate Answer"):
+            if question != None:
+                response = test_question(question)
+                st.write(response)
+            
+        
+   ##    documents = load_documents()
+    
+    
+    
+    
+    
+    
 
+    
 
 
 #def load_documents():
@@ -51,16 +65,6 @@ def load_pdf(uploaded_file):
 
     return documents
 
-def load_documents():
-    uploaded_file = st.file_uploader(label="Choose a PDF file", type="pdf")
-    #'''if uploaded_file is not None:
-    #return None'''
-
-    if uploaded_file is not None:
-        return (load_pdf(uploaded_file))
-        
-    # You can then process the PDF file here, e.g., reading pages
-    return None
    
 
 
