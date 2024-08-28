@@ -15,3 +15,5 @@ def test_question():
   response = query_rag(question)
 
   print(response)
+
+
