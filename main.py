@@ -16,13 +16,15 @@ from io import BytesIO
 import streamlit as st
 
 def main():
-    st.title("TaAI")
+    st.title("TextbookAI")
     parser = argparse.ArgumentParser()
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
-    #if args.reset:
-    #print("✨ Clearing Database")
-    #clear_database()
+
+    button = st.button("Clear database")
+    if button:
+        print("✨ Clearing Database")
+        clear_database()
 
     # Create (or update) the data store.
     documents = load_documents()
