@@ -29,6 +29,7 @@ def main():
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
     if documents is not None:
+        st.write("Successfully uploaded a PDF file.")
         documents = load_pdf(documents)
         chunks = split_documents(documents)
         add_to_chroma(chunks) #Issue here
