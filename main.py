@@ -30,10 +30,9 @@ def main():
         chunks = split_documents(documents)
         add_to_chroma(chunks) #Issue here
         documents = load_documents()
-        question = st.text_input("Ask a question")
-        
-        response = test_question(question)
-        st.header(response)
+    question = st.text_input("Ask a question")
+    response = test_question(question)
+    st.write(response)
 
 
 
