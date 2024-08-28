@@ -1,8 +1,6 @@
 import argparse
-from logging import NullHandler
 import os
 import shutil
-from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from getembedding import get_embedding_function
@@ -11,9 +9,8 @@ from testRag import test_question
 from interface import CHROMA_PATH
 from PyPDF2 import PdfReader
 from io import BytesIO
-
-
 import streamlit as st
+
 
 def main():
     st.title("TextbookAI")
@@ -34,7 +31,6 @@ def main():
         add_to_chroma(chunks) #Issue here
         documents = load_documents()
         test_question()
-
 
 
 
