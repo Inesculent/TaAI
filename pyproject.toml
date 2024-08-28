@@ -10,6 +10,7 @@ langchain = "^0.2.14"
 langchain-community = "^0.2.12"
 langchain-openai = "^0.1.22"
 streamlit = "^1.38.0"
+PyPDF2 = "^3.0.0" 
 
 [tool.pyright]
 # https://github.com/microsoft/pyright/blob/main/docs/configuration.md
