@@ -34,9 +34,11 @@ def main():
         add_to_chroma(chunks) #Issue here
         question = st.text_input("Ask a question")
         if st.button("Generate Answer"):
-            if question != None:
+            if question:
                 response = test_question(question)
-                st.write(response)
+                st.write(response) 
+    else:
+        st.write("Please upload a PDF file to proceed.")
             
         
    ##    documents = load_documents()
