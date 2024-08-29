@@ -74,6 +74,7 @@ def main():
    ##    documents = load_documents()
 
 def load_documents(save_folder):
+    st.write("In here")
     if not os.path.exists(save_folder):
         st.write("Path doesn't exist")
         return
