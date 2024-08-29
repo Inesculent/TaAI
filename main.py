@@ -1,6 +1,7 @@
 import argparse
 import os
 import shutil
+import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from getembedding import get_embedding_function
@@ -12,6 +13,7 @@ from io import BytesIO
 from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 from pathlib import Path
+
 
 def main():
     st.title("TextbookAI")
