@@ -50,7 +50,7 @@ def main():
             w.write(documents.getvalue())
 
         if save_path.exists():
-            st.success(f'File {documents.name} is successfully saved in {save_path}')
+            st.success(f'File {documents.name} is successfully saved in {save_folder}')
         else:
             st.error(f'Error saving file {documents.name}.')
             
