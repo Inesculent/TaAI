@@ -53,9 +53,8 @@ def main():
         else:
             st.error(f'Error saving file {documents.name}.')
             
-        document_loader = PyPDFDirectoryLoader('./pdfs')
-        st.write("test")
-        documents = document_loader.load()
+
+        documents = load_documents()
         st.write("1")
         chunks = split_documents(documents)
         st.write("2")
@@ -75,7 +74,7 @@ def main():
    ##    documents = load_documents()
 
 def load_documents():
-  document_loader = PyPDFDirectoryLoader('data')
+  document_loader = PyPDFDirectoryLoader('./pdfs')
   return document_loader.load()
 
 #Commented out in this manner cause of streamlit
