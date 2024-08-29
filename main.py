@@ -31,11 +31,11 @@ def main():
     if documents is not None:
         st.write("Successfully uploaded a PDF file.")
         documents = load_pdf(documents)
-        print("1")
+        st.write("1")
         chunks = split_documents(documents)
-        print("2")
+        st.write("2")
         add_to_chroma(chunks) 
-        print("3")
+        st.write("3")
         st.write("Question about to be asked")
         question = st.text_input("Ask a question")
         st.write("Question has been asked")
@@ -57,13 +57,13 @@ def main():
 
 def load_pdf(uploaded_file):
     # Convert the uploaded file to a BytesIO object
-    print("One")
+    st.write("One")
     file_stream = BytesIO(uploaded_file.getvalue())
-    print("Two")
+    st.write("Two")
     pdf_reader = PdfReader(file_stream)
-    print("Three")
+    st.write("Three")
     pages = [pdf_reader.pages[i].extract_text() for i in range(len(pdf_reader.pages))]
-    print("Four")
+    st.write("Four")
     documents = [Document(page_content=page_text) for page_text in pages]
 
     return documents
