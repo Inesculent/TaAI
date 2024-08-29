@@ -15,6 +15,7 @@ PyPDF2 = "^3.0.1"
 chromadb = "^0.5.5"
 pathlib = "^1.0.1"
 pdfminer = "^20191125"
+pypdf = "^4.3.1"
 
 
 [tool.pyright]
