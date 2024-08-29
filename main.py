@@ -9,6 +9,7 @@ from testRag import test_question
 from interface import CHROMA_PATH
 from PyPDF2 import PdfReader
 from io import BytesIO
+from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 
 
@@ -28,9 +29,17 @@ def main():
     
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
+    
+
+    
+
     if documents is not None:
+
+        #with open("document.pdf", 'wb') as f:
+            #f.write(filebytes)
         st.write("Successfully uploaded a PDF file.")
-        documents = load_pdf(documents)
+        document_loader = PyPDFLoader(documents)
+        documents = document_loader.load()
         st.write("1")
         chunks = split_documents(documents)
         st.write("2")
@@ -49,13 +58,13 @@ def main():
         
    ##    documents = load_documents()
 
-#def load_documents():
-  #document_loader = PyPDFDirectoryLoader('data')
-  #return document_loader.load()
+def load_documents():
+  document_loader = PyPDFDirectoryLoader('data')
+  return document_loader.load()
 
 #Commented out in this manner cause of streamlit
 
-def load_pdf(uploaded_file):
+'''def load_pdf(uploaded_file):
     # Convert the uploaded file to a BytesIO object
     st.write("One")
     file_stream = BytesIO(uploaded_file.getvalue())
@@ -66,7 +75,7 @@ def load_pdf(uploaded_file):
     st.write("Four")
     documents = [Document(page_content=page_text) for page_text in pages]
 
-    return documents
+    return documents'''
 
    
 def add_to_chroma(chunks: list[Document]):
