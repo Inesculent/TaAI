@@ -54,7 +54,7 @@ def main():
             st.error(f'Error saving file {documents.name}.')
             
 
-        documents = load_documents()
+        documents = load_documents(save_folder)
         st.write("1")
         chunks = split_documents(documents)
         st.write("2")
@@ -73,8 +73,11 @@ def main():
         
    ##    documents = load_documents()
 
-def load_documents():
-  document_loader = PyPDFDirectoryLoader('./pdfs')
+def load_documents(save_folder):
+    if not os.path.exists(save_folder):
+        st.write("Path doesn't exist")
+        return
+  document_loader = PyPDFDirectoryLoader(save_folder)
   return document_loader.load()
 
 #Commented out in this manner cause of streamlit
