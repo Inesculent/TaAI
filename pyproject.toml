@@ -16,7 +16,7 @@ streamlit-chromadb-connection = "^1.0.5"
 pathlib = "^1.0.1"
 pdfminer = "^20191125"
 pypdf = "^4.3.1"
-protobuf = "^5.28.0"
+protobuf = "^4.25.3"
 
 
 [tool.pyright]
