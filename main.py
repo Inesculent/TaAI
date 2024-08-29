@@ -31,8 +31,11 @@ def main():
     if documents is not None:
         st.write("Successfully uploaded a PDF file.")
         documents = load_pdf(documents)
+        print("1")
         chunks = split_documents(documents)
+        print("2")
         add_to_chroma(chunks) 
+        print("3")
         st.write("Question about to be asked")
         question = st.text_input("Ask a question")
         st.write("Question has been asked")
@@ -62,8 +65,6 @@ def load_pdf(uploaded_file):
     return documents
 
    
-
-
 def add_to_chroma(chunks: list[Document]):
   # Load the existing database.
   db = Chroma(persist_directory=CHROMA_PATH, embedding_function=get_embedding_function())
