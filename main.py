@@ -34,11 +34,20 @@ def main():
     
 
     if documents is not None:
-
-        #with open("document.pdf", 'wb') as f:
-            #f.write(filebytes)
+        
         st.write("Successfully uploaded a PDF file.")
-        document_loader = PyPDFLoader(documents)
+        
+        save_folder = 'F:/pdfs'
+        save_path = Path(save_folder, documents.name)
+        with open(save_path, mode='wb') as w:
+            w.write(documents.getvalue())
+
+        if save_path.exists():
+            st.success(f'File {documents.name} is successfully saved!')
+        else:
+            st.error(f'Error saving file {documents.name}.')
+            
+        document_loader = PyPDFDirectoryLoader('pdfs')
         documents = document_loader.load()
         st.write("1")
         chunks = split_documents(documents)
