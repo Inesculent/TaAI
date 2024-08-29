@@ -53,7 +53,8 @@ def main():
         else:
             st.error(f'Error saving file {documents.name}.')
             
-        document_loader = PyPDFDirectoryLoader('pdfs')
+        document_loader = PyPDFDirectoryLoader('./pdfs')
+        st.write("test")
         documents = document_loader.load()
         st.write("1")
         chunks = split_documents(documents)
