@@ -1,7 +1,6 @@
 import argparse
 import os
 import shutil
-import chromadb
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from getembedding import get_embedding_function

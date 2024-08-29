@@ -10,14 +10,13 @@ python = ">=3.10.0,<3.13"
 langchain = "^0.2.15"
 langchain-community = "^0.2.14"
 langchain-openai = "^0.1.22"
-streamlit = "^1.38.0"
+streamlit = "^1.36.0"
 PyPDF2 = "^3.0.1" 
 chromadb = "^0.5.5"
 pathlib = "^1.0.1"
 pdfminer = "^20191125"
 pypdf = "^4.3.1"
 protobuf = "^5.28.0"
-email-validator = "^2.2.0"
 
 
 [tool.pyright]
