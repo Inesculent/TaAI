@@ -2745,6 +2745,16 @@ files = [
 ]
 
 [[package]]
+name = "pysqlite3"
+version = "0.5.3"
+description = "DB-API 2.0 interface for Sqlite 3.x"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pysqlite3-0.5.3.tar.gz", hash = "sha256:54a98e05b087c2c064c8d5b58e9b8f403082eadf830d7d30ede4ecf6a5a5f143"},
+]
+
+[[package]]
 name = "python-dateutil"
 version = "2.9.0.post0"
 description = "Extensions to the standard Python datetime module"
@@ -4195,4 +4205,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.10.0,<3.13"
-content-hash = "a4fda4b6e11f37fb80803cb69d6736325f4f1012755e34a227928875df60e6ec"
+content-hash = "1f21be0e8db09b48cad1e8648e0608eb1167bc08c96f1e72ad944ddb2087bfbf"
