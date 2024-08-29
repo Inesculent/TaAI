@@ -45,15 +45,6 @@ def main():
             
         
    ##    documents = load_documents()
-    
-    
-    
-    
-    
-    
-
-    
-
 
 #def load_documents():
   #document_loader = PyPDFDirectoryLoader('data')
