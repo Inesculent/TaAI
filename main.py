@@ -33,11 +33,22 @@ def main():
 
     
 
+    
+
     if documents is not None:
+
+    
         
         st.write("Successfully uploaded a PDF file.")
         
-        save_folder = 'F:/pdfs'
+        save_folder = './pdfs'
+        
+        if not os.path.exists(path):
+          os.mkdir(path)
+          print("Folder %s created!" % path)
+        else:
+          print("Folder %s already exists" % path)
+        
         save_path = Path(save_folder, documents.name)
         with open(save_path, mode='wb') as w:
             w.write(documents.getvalue())
