@@ -12,6 +12,7 @@ from io import BytesIO
 from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 from pathlib import Path
+from streamlit_chromadb_connection.chromadb_connection import ChromadbConnection
 
 
 def main():
