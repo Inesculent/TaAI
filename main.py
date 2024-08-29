@@ -31,7 +31,7 @@ def main():
 
 
 
-    if documents is not None):
+    if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
         save_folder = './pdfs'
         
