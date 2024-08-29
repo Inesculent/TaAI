@@ -1,5 +1,4 @@
-__import__('pysqlite3')
-import sys
+
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 aiohappyeyeballs==2.4.0 ; python_full_version >= "3.10.0" and python_version < "3.13"
