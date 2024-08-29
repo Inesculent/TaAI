@@ -17,6 +17,7 @@ pathlib = "^1.0.1"
 pdfminer = "^20191125"
 pypdf = "^4.3.1"
 protobuf = "^5.28.0"
+email-validator = "^2.2.0"
 
 
 [tool.pyright]
