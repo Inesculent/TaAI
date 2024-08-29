@@ -9,7 +9,7 @@ from testRag import test_question
 from interface import CHROMA_PATH
 from PyPDF2 import PdfReader
 from io import BytesIO
-from langchain.document_loaders.pdf import PyPDFDirectoryLoader
+from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 from pathlib import Path
 
@@ -29,25 +29,20 @@ def main():
     
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
-    
 
-    
-
-    
 
     if documents is not None:
 
     
         
         st.write("Successfully uploaded a PDF file.")
-        
         save_folder = './pdfs'
         
-        if not os.path.exists(path):
-          os.mkdir(path)
-          print("Folder %s created!" % path)
+        if not os.path.exists(save_folder):
+          os.mkdir(save_folder)
+          print("Folder %s created!" % save_folder)
         else:
-          print("Folder %s already exists" % path)
+          print("Folder %s already exists" % save_folder)
         
         save_path = Path(save_folder, documents.name)
         with open(save_path, mode='wb') as w:
