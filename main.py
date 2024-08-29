@@ -11,7 +11,7 @@ from PyPDF2 import PdfReader
 from io import BytesIO
 from langchain.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
-
+from pathlib import Path
 
 def main():
     st.title("TextbookAI")
