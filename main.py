@@ -45,11 +45,12 @@ def main():
           print("Folder %s already exists" % save_folder)
         
         save_path = Path(save_folder, documents.name)
+        
         with open(save_path, mode='wb') as w:
             w.write(documents.getvalue())
 
         if save_path.exists():
-            st.success(f'File {documents.name} is successfully saved!')
+            st.success(f'File {documents.name} is successfully saved in {save_path}')
         else:
             st.error(f'Error saving file {documents.name}.')
             
@@ -74,7 +75,6 @@ def main():
    ##    documents = load_documents()
 
 def load_documents(save_folder):
-    st.write("In here")
     if not os.path.exists(save_folder):
         st.write("Path doesn't exist")
         return
