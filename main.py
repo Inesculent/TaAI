@@ -77,8 +77,8 @@ def load_documents(save_folder):
     if not os.path.exists(save_folder):
         st.write("Path doesn't exist")
         return
-  document_loader = PyPDFDirectoryLoader(save_folder)
-  return document_loader.load()
+    document_loader = PyPDFDirectoryLoader(save_folder)
+    return document_loader.load()
 
 #Commented out in this manner cause of streamlit
 
