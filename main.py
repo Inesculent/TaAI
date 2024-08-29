@@ -55,17 +55,18 @@ def main():
 
         documents = load_documents(save_folder)
         st.write("1")
-        chunks = split_documents(documents)
-        st.write("2")
-        add_to_chroma(chunks) 
-        st.write("3")
-        st.write("Question about to be asked")
-        question = st.text_input("Ask a question")
-        st.write("Question has been asked")
-        if st.button("Generate Answer"):
-            if question:
-                response = test_question(question)
-                st.write(response) 
+        if (documents):
+            chunks = split_documents(documents)
+            st.write("2")
+            add_to_chroma(chunks) 
+            st.write("3")
+            st.write("Question about to be asked")
+            question = st.text_input("Ask a question")
+            st.write("Question has been asked")
+            if st.button("Generate Answer"):
+                if question:
+                    response = test_question(question)
+                    st.write(response) 
     else:
         st.write("Please upload a PDF file to proceed.")
             
@@ -75,7 +76,7 @@ def main():
 def load_documents(save_folder):
     if not os.path.exists(save_folder):
         st.write("Path doesn't exist")
-        return
+        return None
     document_loader = PyPDFDirectoryLoader(save_folder)
     return document_loader.load()
 
