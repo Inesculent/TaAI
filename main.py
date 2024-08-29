@@ -96,13 +96,15 @@ def load_documents(save_folder):
    
 def add_to_chroma(chunks: list[Document]):
   # Load the existing database.
+    st.write("a")
   db = Chroma(persist_directory=CHROMA_PATH, embedding_function=get_embedding_function())
-
+  st.write("b")
   # Calculate Page IDs.
   chunks_with_ids = calculate_chunk_ids(chunks)
-
+  st.write('c')
   # Add or Update the documents.
   existing_items = db.get(include=[])  # IDs are always included by default
+  st.write('cute vietcong')
   existing_ids = set(existing_items["ids"])
   print(f"Number of existing documents in DB: {len(existing_ids)}")
 
