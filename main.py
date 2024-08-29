@@ -21,7 +21,7 @@ def main():
     button = st.button("Clear database")
     if button:
         print("✨ Clearing Database")
-        clear_database()
+        clear_datab    ase()
 
     # Create (or update) the data store.
     
