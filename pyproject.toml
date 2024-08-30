@@ -6,7 +6,8 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.10.0,<3.13"
+#python = ">=3.10.0,<3.13"
+python = "^3.10.0"
 langchain = "^0.2.15"
 langchain-community = "^0.2.14"
 langchain-openai = "^0.1.22"
