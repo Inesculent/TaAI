@@ -4,7 +4,6 @@ import shutil
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from getembedding import get_embedding_function
-from langchain_community.vectorstores.chroma import Chroma
 from testRag import test_question
 from interface import CHROMA_PATH
 from PyPDF2 import PdfReader
@@ -17,7 +16,7 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-
+from langchain_community.vectorstores.chroma import Chroma
 
 def main():
     st.title("TextbookAI")
