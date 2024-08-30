@@ -1,5 +1,6 @@
 import argparse
 import os
+import glob
 import shutil
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
@@ -170,7 +171,10 @@ def split_documents(documents: list[Document]):
 
 def clear_database():
     if os.path.exists(CHROMA_PATH):
-        shutil.rmtree(CHROMA_PATH)
+        files = glob.glob(CHROMA_PATH)
+        for f in files:
+            os.remove(f)
+        st.write("Sucessfully cleared database!")
 
 if __name__ == "__main__":
     main()
