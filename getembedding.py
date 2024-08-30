@@ -6,14 +6,17 @@ from langchain_openai.embeddings import OpenAIEmbeddings
 #from langchain_huggingface import HuggingFaceEmbeddings
 import os
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+
+
 
 def get_embedding_function():
     #embeddings = BedrockEmbeddings(client = any, credentials_profile_name="default", region_name="us-east-1")
     #embeddings = OllamaEmbeddings(model="nomic-embed-text")
-    embeddings = OpenAIEmbeddings()
+    #embeddings = OpenAIEmbeddings()
     #embeddings = embedding_functions.DefaultEmbeddingFunction()
     #embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+
+    embeddings = OpenAIEmbeddings(openai_api_key= os.getenv("OPENAI_API_KEY"))
     return embeddings
 
 
