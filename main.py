@@ -1,6 +1,6 @@
 import argparse
 import os
-import glob
+from glob import glob
 import shutil
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
@@ -12,6 +12,8 @@ from io import BytesIO
 from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 from pathlib import Path
+from requests import post
+from os.path import join, isfile
 
 __import__('pysqlite3')
 import sys
@@ -171,10 +173,14 @@ def split_documents(documents: list[Document]):
 
 def clear_database():
     if os.path.exists(CHROMA_PATH):
-        files = glob.glob(CHROMA_PATH)
-        for f in files:
-            os.remove(f)
-        st.write("Sucessfully cleared database!")
+        CHUNK = 10
+        API_ENDPOINT = '...'
+        filelist = [filename for filename in glob(join(CHROMA_PATH, '*')) if isfile(filename)]
+        for idx in range(0, len(filelist), CHUNK):
+            files = [('file', open(fn, 'rb')) for fn in filelist[idx:idx+CHUNK]]
+            post(API_ENDPOINT, files=files).raise_for_status()
+            for _, fd in files:
+                fd.close()
     else:
         st.write("Error: Database not found")
 
