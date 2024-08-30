@@ -13,14 +13,14 @@ langchain-community = "^0.2.14"
 langchain-openai = "^0.1.22"
 streamlit = "^1.36.0"
 PyPDF2 = "^3.0.1" 
-#streamlit-chromadb-connection = "^1.0.5"
+streamlit-chromadb-connection = "^1.0.5"
 pathlib = "^1.0.1"
 pdfminer = "^20191125"
 pypdf = "^4.3.1"
 protobuf = "^4.25.3"
 pysqlite3-binary = "^0.5.3.post1"
 #langchain-chroma = "^0.1.3"
-chromadb = "^0.5.5"
+#chromadb = "^0.5.5"
 
 
 
