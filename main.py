@@ -175,6 +175,8 @@ def clear_database():
         for f in files:
             os.remove(f)
         st.write("Sucessfully cleared database!")
+    else:
+        st.write("Error: Database not found")
 
 if __name__ == "__main__":
     main()
