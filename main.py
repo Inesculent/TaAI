@@ -1,6 +1,3 @@
-#__import__('pysqlite3')
-#import sys
-#sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 import argparse
 import os
 import shutil
@@ -15,6 +12,11 @@ from io import BytesIO
 from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 from pathlib import Path
+
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 
 
 def main():
