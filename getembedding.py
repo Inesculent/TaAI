@@ -18,7 +18,7 @@ def get_embedding_function():
 
     
 
-    embeddings = OpenAIEmbeddings(openai_api_key= os.getenv("OPENAI_API_KEY"))
+    embeddings = OpenAIEmbeddings(openai_api_key= os.getenv("OPENAI_API_KEY"), model_name="text-embedding-3-small")    
     return embeddings
 
 
