@@ -163,6 +163,10 @@ def clear_database(documents_list):
         for i in documents_list:
             st.code(i.strip('"\''))
 
+        meh = st.button("test")
+        if meh:
+            st.write("hi")
+
         if deleteFile:
             st.write("HELLO")
             db.delete(
