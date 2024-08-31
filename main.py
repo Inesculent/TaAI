@@ -162,12 +162,10 @@ def clear_database():
             persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
         )
 
-        deleteFile = st.text_input("Enter the file that you want to delete")
-        st.write(db.get(include=[]))
+        #deleteFile = st.text_input("Enter the file that you want to delete")
         db.delete(
-            ids=[deleteFile]
+            ids=[]
         )
-        
         st.write("Sucessfully cleared database!")
     else:
         st.write("Error: Database not found")
