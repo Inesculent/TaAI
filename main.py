@@ -164,6 +164,8 @@ def clear_database(documents_list):
             st.code(i.strip('"\''))
             
         deleteFile = st.text_input("Enter the file that you want to delete").strip()
+
+        st.write("Test1")
         if deleteFile:
             st.write("HELLO")
             db.delete(
@@ -173,6 +175,7 @@ def clear_database(documents_list):
             documents_list.remove(deleteFile)
             st.write(f"Sucessfully cleared database of file: {deleteFile}")
             st.write(db.get(include=[]))
+        st.write("Test2")
     else:
         st.write("Error: Database not found")
 
