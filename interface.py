@@ -1,9 +1,8 @@
 import argparse
 from langchain_community.vectorstores.chroma import Chroma
 from langchain.prompts import ChatPromptTemplate
-from langchain_community.llms.ollama import Ollama
 from getembedding import get_embedding_function
-from langchain import PromptTemplate, HuggingFaceHub, LLMChain
+from langchain import HuggingFaceHub, LLMChain
 
 
 CHROMA_PATH = "Chroma"
@@ -30,7 +29,7 @@ def main():
 def query_rag(query_text: str):
   # Prepare the DB.
   embedding_function = get_embedding_function()
-
+  
   db = Chroma(persist_directory=CHROMA_PATH, embedding_function=embedding_function)
 
   # Search the DB.
@@ -50,7 +49,7 @@ def query_rag(query_text: str):
     llm=HuggingFaceHub(repo_id="mistralai/Mistral-7B-Instruct-v0.1", 
                       model_kwargs={"temperature":1, 
                                     "max_length":64},                     huggingfacehub_api_token='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'))
-
+  
   #response_text = model.invoke(prompt)
   response_text = model.run(input_dict)
 
@@ -64,3 +63,4 @@ def query_rag(query_text: str):
 
 if __name__ == "__main__":
   main()
+  
