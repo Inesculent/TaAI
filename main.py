@@ -162,16 +162,12 @@ def clear_database(documents_list):
             persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
         )
 
+        st.write(documents_list)
         deleteFile = st.text_input("Enter the file that you want to delete")
         
         #st.write(db.get(include=[]))
         
-        #st.write(documents_list)
-        st.write("hi")
-        for i in documents_list:
-            st.write(i.strip('"\''))
-
-
+    
         if deleteFile:
             st.write("hi")
             db.delete(
