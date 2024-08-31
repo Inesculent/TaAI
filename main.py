@@ -34,15 +34,12 @@ def main():
     
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
-    
-
 
     if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
         save_folder = './pdfs'
 
-        if (documents.name not in documents_list):
-            documents_list.append(documents.name)
+       
         
         if not os.path.exists(save_folder):
           os.mkdir(save_folder)
@@ -51,6 +48,8 @@ def main():
           print("Folder %s already exists" % save_folder)
         
         save_path = Path(save_folder, documents.name)
+        if (save_path not in documents_list):
+            documents_list.append(save_path)
         
         with open(save_path, mode='wb') as w:
             w.write(documents.getvalue())
@@ -62,15 +61,10 @@ def main():
             
 
         documents = load_documents(save_folder)
-        st.write("1")
         if (documents):
             chunks = split_documents(documents)
-            st.write("2")
             add_to_chroma(chunks) 
-            st.write("3")
-            st.write("Question about to be asked")
             question = st.text_input("Ask a question")
-            st.write("Question has been asked")
             if st.button("Generate Answer"):
                 if question:
                     response = test_question(question)
