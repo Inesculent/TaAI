@@ -66,7 +66,7 @@ def main():
     button = st.button("Clear database")
     if button:
         print("✨ Clearing Database")
-        documents_list = clear_database(documents_list)
+        clear_database(documents_list)
 
     button1 = st.button("Print Database")
     if button1:
@@ -180,11 +180,9 @@ def clear_database(documents_list):
             documents_list.remove(deleteFile)
             st.write(f"Sucessfully cleared database of file: {deleteFile}")
             st.write(db.get(include=[]))
-            return documents_list
     else:
         st.write("Error: Database not found")
 
-    return documents_list
 
 if __name__ == "__main__":
     main()
