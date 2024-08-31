@@ -65,8 +65,22 @@ def main():
 
     button = st.button("Clear database")
     if button:
-        print("✨ Clearing Database")
-        clear_database(documents_list)
+        if os.path.exists(CHROMA_PATH):
+            db = Chroma(
+                persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
+            )
+
+            st.write(db.get(include=[]))
+
+            #st.write(documents_list)
+            for i in documents_list:
+                st.code(i.strip('"\''))
+
+            deleteFile = st.text_input("Enter the file that you want to delete").strip()
+            st.write("The current movie title is", deleteFile)
+
+        else:
+            st.write("Error: Database not found")
             
         
    ##    documents = load_documents()
