@@ -159,7 +159,7 @@ def clear_database(documents_list):
         
         #st.write(db.get(include=[]))
 
-        st.write(documents_list)
+        st.write(documents_list.strip('"'))
 
         if deleteFile:
             db.delete(
