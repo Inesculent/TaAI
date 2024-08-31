@@ -24,7 +24,11 @@ def main():
     #Take in a new document
     documents_list = []
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
+    button1 = st.button("Clear database")
+    if button1:
 
+        a = st.text_input("Enter the file that you want to delete")
+        st.write("The current movie title is", a)
     #If the added document exists
     if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
@@ -63,11 +67,8 @@ def main():
     else:
         st.write("Please upload a PDF file to proceed.")
 
-    button = st.button("Clear database")
-    if button:
 
-        a = st.text_input("Enter the file that you want to delete")
-        st.write("The current movie title is", a)
+    
    ##    documents = load_documents()
 
 def load_documents(save_folder):
