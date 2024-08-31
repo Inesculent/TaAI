@@ -170,6 +170,8 @@ def clear_database(documents_list):
         for i in documents_list:
             st.write(i.strip('"\''))
 
+        st.write(deleteFile)
+
         if deleteFile:
             st.write("hi")
             db.delete(
