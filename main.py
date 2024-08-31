@@ -67,6 +67,13 @@ def main():
     if button:
         print("✨ Clearing Database")
         documents_list = clear_database(documents_list)
+
+    button1 = st.button("Print Database")
+    if button1:
+        db = Chroma(
+            persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
+        )
+        st.write(db.get(include=[]))
             
         
    ##    documents = load_documents()
