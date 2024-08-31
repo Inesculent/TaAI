@@ -163,7 +163,7 @@ def clear_database():
         )
 
         deleteFile = st.text_input("Enter the file that you want to delete")
-        st.write(db.get(include=[deleteFile]))
+        st.write(db.get(include=[]))
         db.delete(
             ids=[deleteFile]
         )
