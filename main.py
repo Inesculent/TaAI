@@ -164,15 +164,17 @@ def clear_database():
 
         deleteFile = st.text_input("Enter the file that you want to delete")
 
-        st.write(db.get(include=[]))
         
-        db.delete(
-            where={"source": deleteFile}
-        )
-        db.persist()
-            
-        st.write("Sucessfully cleared database!")
         st.write(db.get(include=[]))
+
+        if deleteFile:
+            db.delete(
+                where={"source": deleteFile}
+            )
+            db.persist()
+            
+            st.write("Sucessfully cleared database!")
+            st.write(db.get(include=[]))
     else:
         st.write("Error: Database not found")
 
