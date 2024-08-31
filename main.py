@@ -164,13 +164,16 @@ def clear_database(documents_list):
             st.code(i.strip('"\''))
 
         if deleteFile:
+            st.write("hi")
             db.delete(
                 where={"source": deleteFile}
             )
+            st.write("hi1")
             db.persist()
             documents_list.remove(deleteFile)
             st.write(f"Sucessfully cleared database of file: {deleteFile}")
             st.write(db.get(include=[]))
+            return documents_list
     else:
         st.write("Error: Database not found")
 
