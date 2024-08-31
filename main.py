@@ -25,6 +25,12 @@ def main():
     documents_list = []
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
+    button = st.button("Clear database")
+    if button:
+        print("✨ Clearing Database")
+        clear_database(documents_list)
+
+
     #If the added document exists
     if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
@@ -63,11 +69,7 @@ def main():
     else:
         st.write("Please upload a PDF file to proceed.")
 
-    button = st.button("Clear database")
-    if button:
-        print("✨ Clearing Database")
-        clear_database(documents_list)
-            
+
         
    ##    documents = load_documents()
 
