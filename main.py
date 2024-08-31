@@ -162,12 +162,13 @@ def clear_database():
             persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
         )
 
-        #deleteFile = st.text_input("Enter the file that you want to delete")
-        delete_ids = db.get(include = [])
-        st.write(delete_ids)
+        deleteFile = st.text_input("Enter the file that you want to delete")
 
-        for i in delete_ids:
-            db.delete(ids=[i])
+        st.write(db.get(include=[]))
+        
+        db.delete(
+            where={"source": deleteFile}
+        )
         db.persist()
             
         st.write("Sucessfully cleared database!")
