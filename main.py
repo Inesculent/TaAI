@@ -164,8 +164,7 @@ def clear_database(documents_list):
         for i in documents_list:
             st.code(i.strip('"\''))
             
-        deleteFile = st.text_input("Enter the file that you want to delete").strip()
-        if deleteFile:
+        if st.text_input("Enter the file that you want to delete").strip():
             db.delete(
                 where={"source": deleteFile}
             )
