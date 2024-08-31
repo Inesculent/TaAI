@@ -25,21 +25,24 @@ def main():
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
 
-    button = st.button("Clear database")
-    if button:
-        print("✨ Clearing Database")
-        clear_database()
+    
 
     # Create (or update) the data store.
+
+    documents_list = []
     
     
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
+    
 
 
     if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
         save_folder = './pdfs'
+
+        if (documents.name not in documents_list):
+            documents_list.append(documents.name)
         
         if not os.path.exists(save_folder):
           os.mkdir(save_folder)
@@ -74,6 +77,11 @@ def main():
                     st.write(response) 
     else:
         st.write("Please upload a PDF file to proceed.")
+
+    button = st.button("Clear database")
+    if button:
+        print("✨ Clearing Database")
+        clear_database(documents_list)
             
         
    ##    documents = load_documents()
@@ -156,24 +164,25 @@ def split_documents(documents: list[Document]):
     )
     return text_splitter.split_documents(documents)
 
-def clear_database():
+def clear_database(documents_list):
     if os.path.exists(CHROMA_PATH):
         db = Chroma(
             persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
         )
 
         deleteFile = st.text_input("Enter the file that you want to delete")
-
         
-        st.write(db.get(include=[]))
+        #st.write(db.get(include=[]))
+
+        st.write(documents_list)
 
         if deleteFile:
             db.delete(
                 where={"source": deleteFile}
             )
             db.persist()
-            
-            st.write("Sucessfully cleared database!")
+            documents_list.remove(deleteFile)
+            st.write(f"Sucessfully cleared database of file: {deleteFile}")
             st.write(db.get(include=[]))
     else:
         st.write("Error: Database not found")
