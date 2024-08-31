@@ -166,7 +166,8 @@ def clear_database(documents_list):
         deleteFile = st.text_input("Enter the file that you want to delete").strip()
 
         st.write("Test1")
-        if deleteFile:
+        buttonTest = st.button("Test3")
+        if buttonTest:
             st.write("HELLO")
             db.delete(
                 where={"source": deleteFile}
