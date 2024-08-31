@@ -168,6 +168,7 @@ def clear_database():
 
         for i in delete_ids:
             db.delete(ids=[i])
+        db.persist()
             
         st.write("Sucessfully cleared database!")
         st.write(db.get(include=[]))
