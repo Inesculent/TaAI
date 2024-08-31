@@ -24,8 +24,8 @@ def main():
     #Take in a new document
     documents_list = []
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
-    button1 = st.button("Clear database")
-    if button1:
+
+    if st.button("Clear database"):
 
         a = st.text_input("Enter the file that you want to delete")
         st.write("The current movie title is", a)
