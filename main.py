@@ -66,7 +66,7 @@ def main():
     button = st.button("Clear database")
     if button:
         print("✨ Clearing Database")
-        clear_database(documents_list)
+        clear_database()
 
 
    ##    documents = load_documents()
@@ -149,7 +149,7 @@ def split_documents(documents: list[Document]):
     )
     return text_splitter.split_documents(documents)
 
-def clear_database(documents_list):
+def clear_database():
     if os.path.exists(CHROMA_PATH):
         db = Chroma(
             persist_directory=CHROMA_PATH, embedding_function=get_embedding_function()
@@ -157,16 +157,13 @@ def clear_database(documents_list):
 
         deleteFile = st.text_input("Enter the file that you want to delete")
 
-        #st.write(db.get(include=[]))
-
-        st.write(documents_list)
+        st.write(db.get(include=[]))
 
         if deleteFile:
             db.delete(
                 where={"source": deleteFile}
             )
             db.persist()
-            documents_list.remove(deleteFile)
             st.write(f"Sucessfully cleared database of file: {deleteFile}")
             st.write(db.get(include=[]))
     else:
