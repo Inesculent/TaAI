@@ -39,8 +39,8 @@ def main():
           print("Folder %s already exists" % save_folder)
         
         save_path = Path(save_folder, documents.name)
-        if ((save_folder + documents.name) not in documents_list):
-            documents_list.append(save_folder + documents.name)
+        if ((save_folder + "/" + documents.name) not in documents_list):
+            documents_list.append(save_folder + "/" + documents.name)
         
         with open(save_path, mode='wb') as w:
             w.write(documents.getvalue())
