@@ -163,9 +163,11 @@ def clear_database():
         )
 
         #deleteFile = st.text_input("Enter the file that you want to delete")
-        #delete_ids = db.get(include = [])
+        delete_ids = db.get(include = [])
+        st.write(delete_ids)
 
-        db.delete(db.get()["ids"])
+        for i in delete_ids:
+            db.delete(ids=[i])
             
         st.write("Sucessfully cleared database!")
         st.write(db.get(include=[]))
