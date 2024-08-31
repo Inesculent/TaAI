@@ -158,8 +158,10 @@ def clear_database(documents_list):
         deleteFile = st.text_input("Enter the file that you want to delete")
         
         #st.write(db.get(include=[]))
-
-        st.write(documents_list.strip('"'))
+        
+        #st.write(documents_list)
+        for i in documents_list:
+            st.write(i.strip('"\''))
 
         if deleteFile:
             db.delete(
