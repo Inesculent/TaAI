@@ -25,10 +25,6 @@ def main():
     documents_list = []
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
-    if st.button("Clear database"):
-
-        a = st.text_input("Enter the file that you want to delete")
-        st.write("The current movie title is", a)
     #If the added document exists
     if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
@@ -67,8 +63,13 @@ def main():
     else:
         st.write("Please upload a PDF file to proceed.")
 
-
     
+    if st.button("Clear database"):
+        print("✨ Clearing Database")
+        documents_list = clear_database(documents_list)
+        
+            
+        
    ##    documents = load_documents()
 
 def load_documents(save_folder):
@@ -164,10 +165,18 @@ def clear_database(documents_list):
             st.code(i.strip('"\''))
             
         deleteFile = st.text_input("Enter the file that you want to delete").strip()
-        st.write("The current movie title is", deleteFile)
-        
+        if deleteFile:
+            db.delete(
+                where={"source": deleteFile}
+            )
+            db.persist()
+            documents_list.remove(deleteFile)
+            st.write(f"Sucessfully cleared database of file: {deleteFile}")
+            st.write(db.get(include=[]))
     else:
         st.write("Error: Database not found")
+
+    return documents_list
 
 if __name__ == "__main__":
     main()
