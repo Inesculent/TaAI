@@ -65,7 +65,7 @@ def main():
 
     
     if st.button("Clear database"):
-        print("✨ Clearing Database")
+        st.write("Clearing Database")
         documents_list = clear_database(documents_list)
         
             
