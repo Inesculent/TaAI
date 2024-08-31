@@ -163,9 +163,9 @@ def clear_database(documents_list):
         for i in documents_list:
             st.code(i.strip('"\''))
 
-        st.write("hi")
 
-        if deleteFile:
+        delete_button = st.button("Press to delete")
+        if delete_button:
             st.write("hi")
             db.delete(
                 where={"source": deleteFile}
