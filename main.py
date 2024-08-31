@@ -1,14 +1,10 @@
 import argparse
 import os
-import glob
-import shutil
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from getembedding import get_embedding_function
 from testRag import test_question
 from interface import CHROMA_PATH
-from PyPDF2 import PdfReader
-from io import BytesIO
 from langchain_community.document_loaders.pdf import PyPDFDirectoryLoader
 import streamlit as st
 from pathlib import Path
@@ -25,16 +21,11 @@ def main():
     parser.add_argument("--reset", action="store_true", help="Reset the database.")
     args = parser.parse_args()
 
-    
-
-    # Create (or update) the data store.
-
+    #Take in a new document
     documents_list = []
-    
-    
     documents = st.file_uploader(label="Choose a PDF file", type="pdf")
 
-
+    #If the added document exists
     if (documents is not None):
         st.write("Successfully uploaded a PDF file.")
         save_folder = './pdfs'
