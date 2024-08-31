@@ -169,6 +169,7 @@ def clear_database():
             db.delete(ids=[i])
             
         st.write("Sucessfully cleared database!")
+        st.write(db.get(include=[]))
     else:
         st.write("Error: Database not found")
 
